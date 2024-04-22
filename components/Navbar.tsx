@@ -1,5 +1,7 @@
 import logoWhite from "@/assets/images/logo-white.png";
 import profile from "@/assets/images/profile.png";
+import Image from "next/image";
+import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
 
 function Navbar() {
@@ -37,38 +39,38 @@ function Navbar() {
 
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
             {/* <!-- Logo --> */}
-            <a className="flex flex-shrink-0 items-center" href="/index.html">
-              <img
+            <Link className="flex flex-shrink-0 items-center" href="/">
+              <Image
                 className="h-10 w-auto"
-                src={logoWhite.src}
+                src={logoWhite}
                 alt="PropertyPulse"
               />
 
               <span className="ml-2 hidden text-2xl font-bold text-white md:block">
                 PropertyPulse
               </span>
-            </a>
+            </Link>
             {/* <!-- Desktop Menu Hidden below md screens --> */}
             <div className="hidden md:ml-6 md:block">
               <div className="flex space-x-2">
-                <a
-                  href="/index.html"
+                <Link
+                  href="/"
                   className="rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                 >
                   Home
-                </a>
-                <a
-                  href="/properties.html"
+                </Link>
+                <Link
+                  href="/properties"
                   className="rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
                   Properties
-                </a>
-                <a
-                  href="/add-property.html"
+                </Link>
+                <Link
+                  href="/properties/add"
                   className="rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
                   Add Property
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -85,7 +87,7 @@ function Navbar() {
 
           {/* <!-- Right Side Menu (Logged In) --> */}
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
-            <a href="messages.html" className="group relative">
+            <Link href="/messages" className="group relative">
               <button
                 type="button"
                 className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -111,7 +113,7 @@ function Navbar() {
                 2
                 {/* <!-- Replace with the actual number of notifications --> */}
               </span>
-            </a>
+            </Link>
             {/* <!-- Profile dropdown button --> */}
             <div className="relative ml-3">
               <div>
@@ -124,9 +126,9 @@ function Navbar() {
                 >
                   <span className="absolute -inset-1.5"></span>
                   <span className="sr-only">Open user menu</span>
-                  <img
+                  <Image
                     className="h-8 w-8 rounded-full"
-                    src={profile.src}
+                    src={profile}
                     alt=""
                   />
                 </button>
@@ -141,25 +143,25 @@ function Navbar() {
                 aria-labelledby="user-menu-button"
                 tabIndex={-1}
               >
-                <a
-                  href="/profile.html"
+                <Link
+                  href="/profile"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabIndex={-1}
                   id="user-menu-item-0"
                 >
                   Your Profile
-                </a>
-                <a
-                  href="saved-properties.html"
+                </Link>
+                <Link
+                  href="/properties/saved"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabIndex={-1}
                   id="user-menu-item-2"
                 >
                   Saved Properties
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
@@ -167,7 +169,7 @@ function Navbar() {
                   id="user-menu-item-2"
                 >
                   Sign Out
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -177,24 +179,24 @@ function Navbar() {
       {/* <!-- Mobile menu, show/hide based on menu state. --> */}
       <div className="hidden" id="mobile-menu">
         <div className="space-y-1 px-2 pb-3 pt-2">
-          <a
-            href="/index.html"
+          <Link
+            href="/"
             className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
           >
             Home
-          </a>
-          <a
-            href="/properties.html"
+          </Link>
+          <Link
+            href="/properties"
             className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
           >
             Properties
-          </a>
-          <a
-            href="/add-property.html"
+          </Link>
+          <Link
+            href="/properties/add"
             className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
           >
             Add Property
-          </a>
+          </Link>
           <button className="my-4 flex items-center rounded-md bg-gray-700 px-3 py-2 text-white hover:bg-gray-900 hover:text-white">
             <FaGoogle className="mr-2 text-white" />
             <span>Login or Register</span>
