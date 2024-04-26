@@ -4,12 +4,14 @@ import logoWhite from "@/assets/images/logo-white.png";
 import profile from "@/assets/images/profile.png";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfleMenuOpen, setIsProfleMenuOpen] = useState(false);
+  const pathname = usePathname();
   return (
     <nav className="border-b border-blue-500 bg-blue-700">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -63,19 +65,19 @@ function Navbar() {
               <div className="flex space-x-2">
                 <Link
                   href="/"
-                  className="rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                  className={`${pathname === "/" ? "bg-gray-900" : ""} rounded-md  px-3 py-2 text-base font-medium text-white hover:bg-gray-700`}
                 >
                   Home
                 </Link>
                 <Link
                   href="/properties"
-                  className="rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className={`${pathname === "/properties" ? "bg-gray-900" : ""} rounded-md  px-3 py-2 text-base font-medium text-white hover:bg-gray-700`}
                 >
                   Properties
                 </Link>
                 <Link
                   href="/properties/add"
-                  className="rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className={`${pathname === "/properties/add" ? "bg-gray-900" : ""} rounded-md  px-3 py-2 text-base font-medium text-white hover:bg-gray-700`}
                 >
                   Add Property
                 </Link>
@@ -191,23 +193,26 @@ function Navbar() {
 
       {/* <!-- Mobile menu, show/hide based on menu state. --> */}
       {isMobileMenuOpen && (
-        <div className="" id="mobile-menu">
+        <div className="md:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2">
             <Link
+              onClick={() => setIsMobileMenuOpen(false)}
               href="/"
-              className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+              className={`${pathname === "/" ? "bg-gray-900" : ""} block rounded-md  px-3 py-2 text-base font-medium text-white hover:bg-gray-700`}
             >
               Home
             </Link>
             <Link
+              onClick={() => setIsMobileMenuOpen(false)}
               href="/properties"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              className={`${pathname === "/properties" ? "bg-gray-900" : ""} block rounded-md  px-3 py-2 text-base font-medium text-white hover:bg-gray-700`}
             >
               Properties
             </Link>
             <Link
+              onClick={() => setIsMobileMenuOpen(false)}
               href="/properties/add"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              className={`${pathname === "/properties/add" ? "bg-gray-900" : ""} block rounded-md  px-3 py-2 text-base font-medium text-white hover:bg-gray-700`}
             >
               Add Property
             </Link>
