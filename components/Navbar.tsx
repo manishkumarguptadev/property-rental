@@ -1,10 +1,15 @@
+"use client";
+
 import logoWhite from "@/assets/images/logo-white.png";
 import profile from "@/assets/images/profile.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 
 function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProfleMenuOpen, setIsProfleMenuOpen] = useState(false);
   return (
     <nav className="border-b border-blue-500 bg-blue-700">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -12,6 +17,9 @@ function Navbar() {
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
             {/* <!-- Mobile menu button--> */}
             <button
+              onClick={() => {
+                setIsMobileMenuOpen(!isMobileMenuOpen);
+              }}
               type="button"
               id="mobile-dropdown-button"
               className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -118,6 +126,9 @@ function Navbar() {
             <div className="relative ml-3">
               <div>
                 <button
+                  onClick={() => {
+                    setIsProfleMenuOpen(!isProfleMenuOpen);
+                  }}
                   type="button"
                   className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                   id="user-menu-button"
@@ -135,74 +146,78 @@ function Navbar() {
               </div>
 
               {/* <!-- Profile dropdown --> */}
-              <div
-                id="user-menu"
-                className="absolute right-0 z-10 mt-2 hidden w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="user-menu-button"
-                tabIndex={-1}
-              >
-                <Link
-                  href="/profile"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
+              {isProfleMenuOpen && (
+                <div
+                  id="user-menu"
+                  className="absolute right-0 z-10 mt-2  w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="user-menu-button"
                   tabIndex={-1}
-                  id="user-menu-item-0"
                 >
-                  Your Profile
-                </Link>
-                <Link
-                  href="/properties/saved"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex={-1}
-                  id="user-menu-item-2"
-                >
-                  Saved Properties
-                </Link>
-                <Link
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex={-1}
-                  id="user-menu-item-2"
-                >
-                  Sign Out
-                </Link>
-              </div>
+                  <Link
+                    href="/profile"
+                    className="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabIndex={-1}
+                    id="user-menu-item-0"
+                  >
+                    Your Profile
+                  </Link>
+                  <Link
+                    href="/properties/saved"
+                    className="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabIndex={-1}
+                    id="user-menu-item-2"
+                  >
+                    Saved Properties
+                  </Link>
+                  <Link
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabIndex={-1}
+                    id="user-menu-item-2"
+                  >
+                    Sign Out
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
       {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-      <div className="hidden" id="mobile-menu">
-        <div className="space-y-1 px-2 pb-3 pt-2">
-          <Link
-            href="/"
-            className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-          >
-            Home
-          </Link>
-          <Link
-            href="/properties"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-          >
-            Properties
-          </Link>
-          <Link
-            href="/properties/add"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-          >
-            Add Property
-          </Link>
-          <button className="my-4 flex items-center rounded-md bg-gray-700 px-3 py-2 text-white hover:bg-gray-900 hover:text-white">
-            <FaGoogle className="mr-2 text-white" />
-            <span>Login or Register</span>
-          </button>
+      {isMobileMenuOpen && (
+        <div className="" id="mobile-menu">
+          <div className="space-y-1 px-2 pb-3 pt-2">
+            <Link
+              href="/"
+              className="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+            >
+              Home
+            </Link>
+            <Link
+              href="/properties"
+              className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+            >
+              Properties
+            </Link>
+            <Link
+              href="/properties/add"
+              className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+            >
+              Add Property
+            </Link>
+            <button className="my-4 flex items-center rounded-md bg-gray-700 px-3 py-2 text-white hover:bg-gray-900 hover:text-white">
+              <FaGoogle className="mr-2 text-white" />
+              <span>Login or Register</span>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }
