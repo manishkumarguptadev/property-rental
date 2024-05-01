@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -14,7 +14,7 @@ function Navbar() {
   const pathname = usePathname();
   return (
     <nav className="border-b border-blue-500 bg-blue-700">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div className="mx-auto  px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-20 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
             {/* <!-- Mobile menu button--> */}
@@ -89,7 +89,7 @@ function Navbar() {
           <div className="hidden md:ml-6 md:block">
             <div className="flex items-center">
               <button className="flex items-center rounded-md bg-gray-700 px-3 py-2 text-white hover:bg-gray-900 hover:text-white">
-                <FaGoogle className="mr-2 text-white" />
+                <FcGoogle className="mr-2 text-white" />
                 <span>Login or Register</span>
               </button>
             </div>
@@ -217,7 +217,7 @@ function Navbar() {
               Add Property
             </Link>
             <button className="my-4 flex items-center rounded-md bg-gray-700 px-3 py-2 text-white hover:bg-gray-900 hover:text-white">
-              <FaGoogle className="mr-2 text-white" />
+              <FcGoogle className="mr-2 text-white" />
               <span>Login or Register</span>
             </button>
           </div>
